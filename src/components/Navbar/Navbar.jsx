@@ -10,8 +10,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <a className="btn btn-primary">
-          <span className="text-black">60000000000</span>
-          <span className="text-black">Coins</span>{" "}
+          <span className="text-white">60000000000</span>
+          <span className="text-white">Coins</span>{" "}
           <span>
             <img src={coin} alt="" />
           </span>

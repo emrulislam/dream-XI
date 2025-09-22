@@ -28,9 +28,9 @@ function App() {
     <>
       <Navbar availableBalance={availableBalance}></Navbar>
       <Hero></Hero>
-      <div className="flex justify-between items-center max-w-7xl mx-auto p-4">
+      <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto p-4">
         <h1 className="text-2xl font-bold">{toggle?"Available Players":`Selected Players ${addedPlayers.length}/15`}</h1>
-        <div>
+        <div className="my-5 md:my-0">
           <button
             onClick={() => setToggle(true)}
             className={`p-3 font-bold rounded-l-2xl ${

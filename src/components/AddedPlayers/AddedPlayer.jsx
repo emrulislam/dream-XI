@@ -31,7 +31,7 @@ const AddedPlayer = ({ addedPlayers,removePlayer,setToggle}) => {
           onClick={() => setToggle(true)}
           className="btn btn-primary"
         >
-          Back to Available Players
+          Click to Add More Players
         </button>
       </div>
     </div>

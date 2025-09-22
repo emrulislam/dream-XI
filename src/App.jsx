@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import AvailablePlayers from "./components/Available Players/AvailablePlayers";
 import SelectedPlayers from "./components/SelectedPlayers/SelectedPlayers";
+import { ToastContainer } from "react-toastify";
 
 const playersPromise = fetch("/public/players.json").then((res) => res.json());
 function App() {
@@ -56,6 +57,7 @@ function App() {
           removePlayer
         }></SelectedPlayers>
       )}
+      <ToastContainer></ToastContainer>
     </>
   );
 }

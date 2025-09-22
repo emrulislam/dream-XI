@@ -1,6 +1,11 @@
-import React, { useState } from "react";
-
-const Player = ({ player, availableBalance, setAvailableBalance,setAddedPlayers}) => {
+import { toast } from "react-toastify";
+const Player = ({
+  player,
+  availableBalance,
+  setAvailableBalance,
+  addedPlayers,
+  setAddedPlayers,
+}) => {
   const {
     id,
     image,
@@ -12,7 +17,7 @@ const Player = ({ player, availableBalance, setAvailableBalance,setAddedPlayers}
     battingStyle,
     bowlingStyle,
   } = player;
-  const [isSelected, setSelected] = useState(false);
+  const isSelected = addedPlayers.some((p) => p.id === player.id);
   return (
     <div
       key={id}
@@ -56,22 +61,25 @@ const Player = ({ player, availableBalance, setAvailableBalance,setAddedPlayers}
         <button
           onClick={() => {
             if (!isSelected && availableBalance < price) {
-              alert("Insufficient Coin");
+              toast("Insufficient Coin");
               return;
             }
-
-            if (isSelected) {
-              setAvailableBalance(prev => prev + price);
-               setAddedPlayers(prev => prev.filter(p => p.id !== player.id));
-            } else {
-              setAvailableBalance(prev => prev - price);
-              setAddedPlayers(prev => [...prev, player]);
+            if (!isSelected && addedPlayers.length >= 15) {
+              toast("You can select a maximum of 15 players!");
+              return;
             }
-
-            setSelected(!isSelected);
-          }
-        }
+            if (isSelected) {
+              setAvailableBalance((prev) => prev + price);
+              setAddedPlayers((prev) => prev.filter((p) => p.id !== player.id));
+              toast(`${name} removed your team`)
+            } else {
+              setAvailableBalance((prev) => prev - price);
+              setAddedPlayers((prev) => [...prev, player]);
+              toast(`${name} added to your team`)
+            }
+          }}
           className={`btn ${isSelected ? "btn-success" : "btn-neutral"}`}
+          disabled={!isSelected && availableBalance < price}
         >
           {isSelected ? "Selected" : "Choose Player"}
         </button>

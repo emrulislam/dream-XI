@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Player = ({ player, availableBalance, setAvailableBalance }) => {
+const Player = ({ player, availableBalance, setAvailableBalance,setAddedPlayers}) => {
   const {
     id,
     image,
@@ -24,7 +24,7 @@ const Player = ({ player, availableBalance, setAvailableBalance }) => {
 
       <div className="flex justify-between items-center gap-5">
         <span>
-          <i class="fa-solid fa-user text-2xl"></i>
+          <i className="fa-solid fa-user text-2xl"></i>
         </span>
         <h3 className="text-2xl font-bold">{name}</h3>
       </div>
@@ -32,7 +32,7 @@ const Player = ({ player, availableBalance, setAvailableBalance }) => {
         <p>
           {" "}
           <span className="mr-2">
-            <i class="fa-solid fa-flag"></i>
+            <i className="fa-solid fa-flag"></i>
           </span>
           {nationality}
         </p>
@@ -42,7 +42,7 @@ const Player = ({ player, availableBalance, setAvailableBalance }) => {
         <span className="font-bold">Rating</span>
         <p className="bg-[#1313130d] p-2 rounded-xl">{rating}</p>
       </div>
-      <hr class="border-gray-300 my-4"></hr>
+      <hr className="border-gray-300 my-4"></hr>
       <div className="flex justify-between items-center">
         <span className="font-bold">Batting Style</span>
         <p className="bg-[#1313130d] p-2 rounded-xl">{battingStyle}</p>
@@ -61,13 +61,16 @@ const Player = ({ player, availableBalance, setAvailableBalance }) => {
             }
 
             if (isSelected) {
-              setAvailableBalance((prev) => prev + price);
+              setAvailableBalance(prev => prev + price);
+               setAddedPlayers(prev => prev.filter(p => p.id !== player.id));
             } else {
-              setAvailableBalance((prev) => prev - price);
+              setAvailableBalance(prev => prev - price);
+              setAddedPlayers(prev => [...prev, player]);
             }
 
             setSelected(!isSelected);
-          }}
+          }
+        }
           className={`btn ${isSelected ? "btn-success" : "btn-neutral"}`}
         >
           {isSelected ? "Selected" : "Choose Player"}

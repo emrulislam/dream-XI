@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsLetter = () => {
     return (
-<section className="bg-gray-900 text-white py-16 px-6 rounded-3xl max-w-7xl mx-auto my-5">
+<section className="bg-gray-900 text-white py-16 px-6  rounded-none md:rounded-3xl max-w-7xl mx-auto my-5">
       <div className="text-center space-y-4">
         <h2 className="text-3xl sm:text-4xl font-bold">
           Subscribe to Our Newsletter

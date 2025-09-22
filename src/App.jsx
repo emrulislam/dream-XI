@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar/Navbar";
 import AvailablePlayers from "./components/Available Players/AvailablePlayers";
 import SelectedPlayers from "./components/SelectedPlayers/SelectedPlayers";
 import { ToastContainer,toast } from "react-toastify";
+import NewsLetter from "./components/NewsLetter/NewsLetter";
+import Footer from "./components/Footer/Footer";
+import Hero from "./components/Hero/Hero";
 
 const playersPromise = fetch("/public/players.json").then((res) => res.json());
 function App() {
@@ -24,6 +27,7 @@ function App() {
   return (
     <>
       <Navbar availableBalance={availableBalance}></Navbar>
+      <Hero></Hero>
       <div className="flex justify-between items-center max-w-7xl mx-auto p-4">
         <h1 className="text-2xl font-bold">{toggle?"Available Players":`Selected Players ${addedPlayers.length}/15`}</h1>
         <div>
@@ -64,6 +68,8 @@ function App() {
           removePlayer
         }></SelectedPlayers>
       )}
+      <NewsLetter></NewsLetter>
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </>
   );

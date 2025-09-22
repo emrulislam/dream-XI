@@ -1,8 +1,10 @@
 import React from "react";
 
-const AddedPlayer = ({ addedPlayers,removePlayer}) => {
+const AddedPlayer = ({ addedPlayers,removePlayer,setToggle}) => {
   return (
     <div className="max-w-7xl mx-auto space-y-4">
+      <h2 className="text-2xl font-bold mb-4">Your Selected Players</h2>
+       {addedPlayers.length === 0 && <p>No players selected yet.</p>}
       {addedPlayers.map((player) => (
         <div
           key={player.id}
@@ -24,6 +26,14 @@ const AddedPlayer = ({ addedPlayers,removePlayer}) => {
           </div>
         </div>
       ))}
+<div className="mt-6">
+        <button
+          onClick={() => setToggle(true)}
+          className="btn btn-primary"
+        >
+          Back to Available Players
+        </button>
+      </div>
     </div>
   );
 };

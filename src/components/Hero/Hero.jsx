@@ -5,7 +5,7 @@ import heroImg from "../../assets/banner-main.png";
 const Hero = () => {
   return (
 <div
-      className="relative bg-black text-white py-16 px-6 rounded-none md:rounded-3xl overflow-hidden max-w-7xl mx-auto"
+      className="relative bg-black text-white py-16 px-6 rounded-none md:rounded-3xl overflow-hidden max-w-7xl mx-auto my-5"
       style={{
         backgroundImage:`url(${heroBg})`,
         backgroundSize: 'cover',

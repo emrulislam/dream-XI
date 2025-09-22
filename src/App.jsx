@@ -9,7 +9,7 @@ import NewsLetter from "./components/NewsLetter/NewsLetter";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 
-const playersPromise = fetch("/public/players.json").then((res) => res.json());
+const playersPromise = fetch("/players.json").then((res) => res.json());
 function App() {
   const [toggle, setToggle] = useState(true);
   const [availableBalance, setAvailableBalance] = useState(600000000);

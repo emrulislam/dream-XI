@@ -15,7 +15,7 @@ const Player = ({ player }) => {
   return (
     <div
       key={id}
-      className="text-black p-6 rounded-2xl border border-[#1313131a] space-y-4 shadow-xl"
+      className="text-black p-6 rounded-2xl border border-[#1313131a] space-y-4 shadow-xl "
     >
       <div className="flex justify-center">
         <img src={image} alt={name} className="rounded-2xl"/>

@@ -1,9 +1,10 @@
 import { Suspense, useState } from "react";
+
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import AvailablePlayers from "./components/Available Players/AvailablePlayers";
 import SelectedPlayers from "./components/SelectedPlayers/SelectedPlayers";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer,toast } from "react-toastify";
 
 const playersPromise = fetch("/public/players.json").then((res) => res.json());
 function App() {
@@ -13,6 +14,12 @@ function App() {
   const removePlayer = (player) => {
     setAddedPlayers(prev => prev.filter(p => p.id !== player.id));
     setAvailableBalance(prev => prev + player.price);
+    toast(
+            <div className="flex items-center gap-2">
+              <img src={player.image} alt={player.name} className="w-8 h-8 rounded-full" />
+              <span>{player.name} removed from your team</span>
+            </div>
+    )
   }
   return (
     <>
@@ -22,7 +29,7 @@ function App() {
         <div>
           <button
             onClick={() => setToggle(true)}
-            className={`p-3    rounded-l-2xl ${
+            className={`p-3 font-bold rounded-l-2xl ${
               toggle === true ? "bg-[#e7fe29]" : ""
             }`}
           >
@@ -30,7 +37,7 @@ function App() {
           </button>
           <button
             onClick={() => setToggle(false)}
-            className={`p-3    rounded-r-2xl ${
+            className={`p-3  font-bold  rounded-r-2xl ${
               toggle === false ? "bg-[#e7fe29]" : ""
             }`}
           >

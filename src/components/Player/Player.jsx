@@ -71,11 +71,29 @@ const Player = ({
             if (isSelected) {
               setAvailableBalance((prev) => prev + price);
               setAddedPlayers((prev) => prev.filter((p) => p.id !== player.id));
-              toast(`${name} removed your team`)
+              toast(
+                <div className="flex items-center gap-2">
+                  <img
+                    src={image}
+                    alt={name}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <span> {name} removed to your team</span>
+                </div>
+              );
             } else {
               setAvailableBalance((prev) => prev - price);
               setAddedPlayers((prev) => [...prev, player]);
-              toast(`${name} added to your team`)
+              toast(
+                <div className="flex items-center gap-2">
+                  <img
+                    src={image}
+                    alt={name}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <span> {name} added to your team</span>
+                </div>
+              );
             }
           }}
           className={`btn ${isSelected ? "btn-success" : "btn-neutral"}`}
